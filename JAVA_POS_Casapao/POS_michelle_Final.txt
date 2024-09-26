@@ -1,0 +1,663 @@
+import java.awt.*;
+import java.applet.*;
+import java.awt.event.*;
+
+public class Pos extends Applet implements ActionListener {
+	Label lbltitle = new Label ("Point Of Sale System of Sweet Cakes Fantasy");
+	Label lblname = new Label("Enter Cashier Name:");
+	TextField txtname = new TextField(20);
+	Button cmddine = new Button ("Dine In"); 
+	Button cmdtakeout = new Button ("Take Out"); 
+	Button cmdcancel = new Button ("Clear All");
+	Label lblfirst = new Label("Welcome to Sweet Cakes Fantasy!");
+	List lstitems = new List ();
+	Label lblcakes = new Label ("> > > > > > > > > > > > FLAVOURED CAKES < < < < < < < < < < < < <");
+	Button cmdchococake = new Button ("Chocolate Cake (Php.45.00)");
+	Button cmdstrwberrycake = new Button ("Strawberry Cake (Php.50.00)");
+	Button cmdvelvetcake = new Button ("Red Velvet Cake (Php.50.00)");	
+	Button cmdmochacake = new Button("Mocha Cake (Php.50.00)");
+	Button cmdlflancake = new Button ("Leche Flan Cake (Php.50.00)");
+	Button cmdvanillacake = new Button ("Vanilla Cake (Php.50.00)");
+	Button cmdforest = new Button ("Black Forest Cake (Php.50.00)");
+	Button cmdoreocake = new Button ("Oreo Cake (Php.50.00)");
+	Button cmdcoffeecake = new Button ("Coffee Cake (Php.50.00)");
+	Button cmdbluecake = new Button ("Blueberry Cake (Php.50.00)");
+	Label lbldrinks = new Label ("> > > > > > > > > > > > > > DRINKS < < < < < < < < < < < < < <");
+	Button cmdcoke = new Button ("Coca Cola");
+	Button cmdsprite = new Button ("Sprite");
+	Button cmdroyal = new Button ("Royal");
+	Button cmdcoffee = new Button ("Coffee");
+	Button cmdicedtea = new Button ("Iced Ted");
+	Button cmdnone = new Button ("None");
+	Label lblquan = new Label("Enter Quantity:");
+	TextField txtquan = new TextField(43);
+	Button cmdcompute = new Button ("Compute");
+	Label lblamount = new Label (" Total Amount: ");
+	TextField txtamnt = new TextField (28);
+	Label lblpayment = new Label("Enter Payment:");
+	TextField txtpay = new TextField (28);
+	Button ok = new Button ("OK");
+	Button setnew = new Button ("Set New");
+
+	Label rec = new Label ("Number of item(s):");
+	Label num = new Label ("-");
+	Label back1 = new Label("");
+	Label back2 = new Label("");
+	Label back3 = new Label("");
+	Label back4 = new Label("");
+	Label back5 = new Label("");
+	Label back6 = new Label("");
+	Label extra = new Label("");
+	
+	public void init() {
+		txtquan.setEnabled(false);
+		cmddine.setEnabled(false);
+		cmdtakeout.setEnabled(false);
+		cmdcancel.setEnabled(false);
+		cmdchococake.setEnabled(false);
+		cmdstrwberrycake.setEnabled(false);
+		cmdvelvetcake.setEnabled(false);
+		cmdmochacake.setEnabled(false);
+		cmdlflancake.setEnabled(false);
+		cmdvanillacake.setEnabled(false);
+		cmdforest.setEnabled(false);
+		cmdoreocake.setEnabled(false);
+		cmdcoffeecake.setEnabled(false);
+		cmdbluecake.setEnabled(false);
+		cmdcoke.setEnabled(false);
+		cmdsprite.setEnabled(false);
+		cmdroyal.setEnabled(false);
+		cmdcoffee.setEnabled(false);
+		cmdicedtea.setEnabled(false);
+		cmdnone.setEnabled(false);
+		cmdcompute.setEnabled(false);
+		setnew.setEnabled(false);
+		add(lbltitle);
+		add(cmddine);	
+		add(cmdtakeout);
+		add(cmdcancel);
+		add(lblfirst);
+		add(lstitems);
+		add(lblcakes);
+		add(cmdchococake);
+		add(cmdstrwberrycake);
+		add(cmdvelvetcake);
+		add(cmdmochacake);
+		add(cmdlflancake);
+		add(cmdvanillacake);
+		add(cmdforest);
+		add(cmdoreocake);
+		add(cmdcoffeecake);
+		add(cmdbluecake);
+		add(lbldrinks);
+		add(cmdcoke);
+		add(cmdsprite);
+		add(cmdroyal);
+		add(cmdcoffee);
+		add(cmdicedtea);
+		add(cmdnone);
+		add(lblquan);
+		add(txtquan);
+		add(cmdcompute);
+		add(lblamount);
+		add(txtamnt);
+		add(lblpayment);
+		add(txtpay);
+		add(lblname);
+		add(txtname);
+		add(ok);
+		add(setnew);
+		add(rec);
+		add(num);
+		add(back1);
+		add(back2);
+		add(back3);
+		add(back4);
+		add(back5);
+		add(back6);
+		add(extra);
+		cmddine.addActionListener(this);
+		cmdtakeout.addActionListener(this);
+		cmdcancel.addActionListener(this);
+		ok.addActionListener(this);
+		setnew.addActionListener(this);
+	}	
+		public void paint(Graphics g) {
+		//g.drawString("Welcome to Java!!", 50, 60 );
+		resize(2000,2000);
+		setBackground(Color.pink);
+		extra.setLocation(10,10);extra.setSize(1338,658); extra.setBackground(Color.darkGray);
+		//title
+		lbltitle.setLocation(500,13);lbltitle.setFont(new Font ("Arial",Font.BOLD,17));
+		lbltitle.setBackground(Color.darkGray);lbltitle.setForeground(Color.magenta);
+		lblfirst.setLocation(90,40);lblfirst.setFont(new Font ("Arial",Font.BOLD,17));
+		lblfirst.setBackground(Color.darkGray);lblfirst.setForeground(Color.magenta);
+		//count
+		rec.setBackground(Color.darkGray);rec.setLocation(950,40);rec.setForeground(Color.white);
+		rec.setFont(new Font ("Arial",Font.BOLD,15));
+		num.setBackground(Color.darkGray);num.setLocation(1120,40);num.setForeground(Color.white);
+		num.setFont(new Font ("Arial",Font.BOLD,15));
+		//list
+		lstitems.setLocation(600,70);lstitems.setSize(498,550);
+		//threebuttons
+		cmddine.setLocation(40,80);cmddine.setSize(130,40);cmddine.setFont(new Font ("Arial",Font.BOLD,17));
+		cmddine.setForeground(Color.white);cmddine.setBackground(Color.pink);
+		cmdtakeout.setLocation (190,80);cmdtakeout.setSize(130,40);cmdtakeout.setFont(new Font ("Arial",Font.BOLD,17));
+		cmdtakeout.setForeground(Color.white);cmdtakeout.setBackground(Color.pink);
+		cmdcancel.setLocation (340,80);cmdcancel.setSize(130,40);cmdcancel.setFont(new Font ("Arial",Font.BOLD,17));
+		cmdcancel.setForeground(Color.white);cmdcancel.setBackground(Color.pink);
+		//cakes
+		lblcakes.setLocation(20,130);lblcakes.setFont(new Font ("Arial",Font.BOLD,17));
+		lblcakes.setBackground(Color.darkGray);lblcakes.setForeground(Color.magenta);
+		cmdchococake.setLocation(20,160);cmdchococake.setSize(170,50);
+		cmdchococake.setBackground(Color.cyan);
+		cmdstrwberrycake.setLocation(200,160);cmdstrwberrycake.setSize(170,50);
+		cmdstrwberrycake.setBackground(Color.cyan);
+		cmdvelvetcake.setLocation(380,160);cmdvelvetcake.setSize(170,50);
+		cmdvelvetcake.setBackground(Color.cyan);
+		cmdmochacake.setLocation(20,220);cmdmochacake.setSize(170,50);
+		cmdmochacake.setBackground(Color.yellow);
+		cmdlflancake.setLocation(200,220);cmdlflancake.setSize(170,50);
+		cmdlflancake.setBackground(Color.yellow);
+		cmdvanillacake.setLocation(380,220);cmdvanillacake.setSize(170,50);
+		cmdvanillacake.setBackground(Color.yellow);
+		cmdforest.setLocation(20,280);cmdforest.setSize(180,50);
+		cmdforest.setBackground(Color.magenta);
+		cmdoreocake.setLocation(210,280);cmdoreocake.setSize(170,50);
+		cmdoreocake.setBackground(Color.magenta);
+		cmdcoffeecake.setLocation(390,280);cmdcoffeecake.setSize(160,50);
+		cmdcoffeecake.setBackground(Color.magenta);
+		cmdbluecake.setLocation(20,340);cmdbluecake.setSize(170,50);
+		cmdbluecake.setBackground(Color.cyan);
+		
+		//drinks
+		lbldrinks.setLocation(20,420);lbldrinks.setFont(new Font ("Arial",Font.BOLD,17));
+		lbldrinks.setBackground(Color.darkGray);lbldrinks.setForeground(Color.magenta);
+		cmdcoke.setLocation (20,460);cmdcoke.setSize(150,40);cmdcoke.setBackground(Color.red);
+		cmdsprite.setLocation(180,460);cmdsprite.setSize(150,40);cmdsprite.setBackground(Color.green);
+		cmdroyal.setLocation(340,460);cmdroyal.setSize(150,40);cmdroyal.setBackground(Color.orange);
+		cmdcoffee.setLocation(20,520);cmdcoffee.setSize(150,40);cmdcoffee.setBackground(Color.yellow);
+		cmdicedtea.setLocation(180,520);cmdicedtea.setSize(150,40);cmdicedtea.setBackground(Color.cyan);
+		cmdnone.setLocation (340,520);cmdnone.setSize(150,40);cmdnone.setBackground(Color.white);
+		
+	//button computation
+		cmdcompute.setLocation(1110,220);cmdcompute.setSize(220,35);
+		cmdcompute.setBackground(Color.pink);cmdcompute.setForeground(Color.white);
+		cmdcompute.setFont(new Font ("Arial",Font.BOLD,17));
+		setnew.setLocation(1110,280);setnew.setSize(220,35);
+		setnew.setBackground(Color.pink);setnew.setForeground(Color.white);
+		setnew.setFont(new Font ("Arial",Font.BOLD,17));
+		//right
+		lblamount.setLocation(1100,70);lblamount.setBackground(Color.darkGray);lblamount.setForeground(Color.white);
+		lblamount.setFont(new Font ("Arial",Font.BOLD,15));
+		txtamnt.setLocation(1110,110);
+		lblpayment.setLocation(1100,150);lblpayment.setBackground(Color.darkGray);lblpayment.setForeground(Color.white);
+		lblpayment.setFont(new Font ("Arial",Font.BOLD,15));
+		txtpay.setLocation(1110,180);
+		//bottom
+		lblquan.setLocation(20,590);lblquan.setFont(new Font ("Arial",Font.BOLD,17));
+		lblquan.setBackground(Color.darkGray);lblquan.setForeground(Color.white);
+		txtquan.setLocation(160,590);	
+		//up left
+		lblname.setLocation(20,11);lblname.setBackground(Color.darkGray);
+		lblname.setFont(new Font ("Arial",Font.BOLD,17));lblname.setForeground(Color.white);
+		txtname.setLocation(195,15);
+		ok.setLocation(365,15);ok.setBackground(Color.pink);
+		//extras
+		back1.setLocation(15,158);back1.setSize(545,55);back1.setBackground(Color.pink);
+		back2.setLocation(30,70);back2.setSize(450,59);back2.setBackground(Color.black);
+		back3.setLocation(15,218);back3.setSize(545,55);back3.setBackground(Color.green);
+		back4.setLocation(15,278);back4.setSize(545,55);back4.setBackground(Color.blue);
+		back5.setLocation(15,338);back5.setSize(180,55);back5.setBackground(Color.pink);
+		back6.setLocation(15,458);back6.setSize(488,110);back6.setBackground(Color.lightGray);
+		
+		//Buttons
+		cmdchococake.addActionListener(this);
+		cmdstrwberrycake.addActionListener(this);
+		cmdvelvetcake.addActionListener(this);
+		cmdmochacake.addActionListener(this);
+		cmdlflancake.addActionListener(this);
+		cmdvanillacake.addActionListener(this);
+		cmdforest.addActionListener(this);
+		cmdoreocake.addActionListener(this);
+		cmdcoffeecake.addActionListener(this);
+		cmdbluecake.addActionListener(this);
+		cmdcoke.addActionListener(this);
+		cmdsprite.addActionListener(this);
+		cmdroyal.addActionListener(this);
+		cmdcoffee.addActionListener(this);
+		cmdicedtea.addActionListener(this);
+		cmdnone.addActionListener(this);
+	}
+int ctr,ctr1,ctr2,ctr3,ctr4,ctr5,ctr6,ctr7,ctr8,ctr9,ctr10,ctr11,ctr12,ctr13,ctr14,ctr15,ctr16;
+int quana,quanb,quanc,quand,quane,quanf,quang,quanh,quani,quanj,quann,quano,quanp,quanq,quanr,quans;
+int all,diff;
+		public void actionPerformed(ActionEvent e)
+	{		
+		cmdcompute.addActionListener(this);
+		String name = txtname.getText();
+		String payment = txtpay.getText();
+		String count = num.getText();
+		String action = e.getActionCommand();
+		if (action.equals("Compute"))
+	{
+		int cash = Integer.parseInt(txtpay.getText());
+		diff=cash-all;
+			if (diff>0)
+		{
+		lblamount.setText("Change:");
+		txtamnt.setText("" +diff);
+		lstitems.add("======================================================================");
+		lstitems.add(" Amount Due:" + all +".00");
+		lstitems.add(" Cash:"+ payment +".00");
+		lstitems.add("Change:" +  diff +".00");
+		lstitems.add("Number of item(s):" + count);		
+		lstitems.add("--------------------------------------------------------------------------------------------------------------------------");
+		lstitems.add("          Name: ____________________________________________");
+		lstitems.add("          PWD/Senior ID:____________________________________ ");
+		lstitems.add("          Address: _________________________________________");
+		lstitems.add("          Business Style: __________________________________");
+		lstitems.add("          Signature: _______________________________________ ");
+		
+		
+		lstitems.add("                                                     THIS SERVES AS YOUR OFFICIAL RECEIPT");
+		lstitems.add("                                                       Thank you for coming! Please come again.");
+		lstitems.add("                                                               We love to hear your feedback...");
+		lstitems.add("                                                                        Call: (03) 123-8888");
+		lstitems.add("                                                         Text only: 0939-123-0278/0956-321-4596");
+		lstitems.add("                                                    Email: feedback@sweetcakesfantasy.com.ph");
+		cmdcompute.setEnabled(false);
+		setnew.setEnabled(true);
+		}
+		else
+		{
+			if(diff<0)
+			txtpay.setText("You have insufficient money");
+		}
+	}
+		
+		if(action.equals("OK"))
+		{
+			cmddine.setEnabled(true);
+			cmdtakeout.setEnabled(true);
+			cmdcancel.setEnabled(true);
+		}
+		if(action.equals("Clear All"))
+		{	
+		quana=quana*0;quanb=quanb*0;quanc=quanc*0;quand=quand*0;quane=quane*0;quanf=quanf*0;quang=quang*0;quanh=quanh*0;quani=quani*0;quanj=quanj*0;
+quann=quann*0;quano=quano*0;quanp=quanp*0;quanq=quanq*0;quanr=quanr*0;quans=quans*0;
+		ctr=ctr*0;
+		cmddine.setEnabled(true);
+		cmdtakeout.setEnabled(true);
+		cmdchococake.setEnabled(false);
+		cmdstrwberrycake.setEnabled(false);
+		cmdvelvetcake.setEnabled(false);
+		cmdmochacake.setEnabled(false);
+		cmdlflancake.setEnabled(false);
+		cmdvanillacake.setEnabled(false);
+		cmdforest.setEnabled(false);
+		cmdoreocake.setEnabled(false);
+		cmdcoffeecake.setEnabled(false);
+		cmdbluecake.setEnabled(false);
+		cmdcoke.setEnabled(false);
+		cmdsprite.setEnabled(false);
+		cmdroyal.setEnabled(false);
+		cmdcoffee.setEnabled(false);
+		cmdicedtea.setEnabled(false);
+		cmdnone.setEnabled(false);
+		cmdcompute.setEnabled(false);
+		setnew.setEnabled(false);
+		lstitems.clear();
+		num.setText("0");
+		txtamnt.setText("");
+		txtpay.setText("");
+		}
+		
+		if (action.equals("Dine In"))
+		{
+		cmddine.setEnabled(false);
+		cmdtakeout.setEnabled(false);
+		cmdchococake.setEnabled(true);
+		cmdstrwberrycake.setEnabled(true);
+		cmdvelvetcake.setEnabled(true);
+		cmdmochacake.setEnabled(true);
+		cmdlflancake.setEnabled(true);
+		cmdvanillacake.setEnabled(true);
+		cmdforest.setEnabled(true);
+		cmdoreocake.setEnabled(true);
+		cmdcoffeecake.setEnabled(true);
+		cmdbluecake.setEnabled(true);
+		cmdcoke.setEnabled(true);
+		cmdsprite.setEnabled(true);
+		cmdroyal.setEnabled(true);
+		cmdcoffee.setEnabled(true);
+		cmdicedtea.setEnabled(true);
+		cmdnone.setEnabled(true);
+		cmdcompute.setEnabled(true);
+		txtquan.setEnabled(true);
+			lstitems.add("                                                                      Sweet Cakes Fantasy");
+			lstitems.add("                                                                              Owned by:");
+			lstitems.add("                                                                       Casapao, Michelle");
+			lstitems.add("                                                                  White Celestial Avenue");
+			lstitems.add("                                                        Brgy. Malusak Sta. Rosa City Laguna");
+			lstitems.add("                                                                    Tel #: 09198578542");
+			lstitems.add("--------------------------------------------------------------------------------------------------------------------------");
+			lstitems.add("================================DINE IN===============================");
+	    	lstitems.add("    Cashier Name:"  +   name);
+	    	lstitems.add("              Items");
+		}
+		
+		if (action.equals("Take Out"))
+		{
+			cmddine.setEnabled(false);
+			cmdtakeout.setEnabled(false);
+			cmdchococake.setEnabled(true);
+			cmdstrwberrycake.setEnabled(true);
+			cmdvelvetcake.setEnabled(true);
+			cmdmochacake.setEnabled(true);
+			cmdlflancake.setEnabled(true);
+			cmdvanillacake.setEnabled(true);
+			cmdforest.setEnabled(true);
+			cmdoreocake.setEnabled(true);
+			cmdcoffeecake.setEnabled(true);
+			cmdbluecake.setEnabled(true);
+			cmdcoke.setEnabled(true);
+			cmdsprite.setEnabled(true);
+			cmdroyal.setEnabled(true);
+			cmdcoffee.setEnabled(true);
+			cmdicedtea.setEnabled(true);
+			cmdnone.setEnabled(true);
+			cmdcompute.setEnabled(true);	
+			txtquan.setEnabled(true);
+			lstitems.add("                                                                      Sweet Cakes Fantasy");
+			lstitems.add("                                                                              Owned by:");
+			lstitems.add("                                                                       Casapao, Michelle");
+			lstitems.add("                                                                  White Celestial Avenue");
+			lstitems.add("                                                        Brgy. Malusak Sta. Rosa City Laguna");
+			lstitems.add("                                                                    Tel #: 09198578542");
+			lstitems.add("------------------------------------------------------------------------------------------------------------------------");
+			lstitems.add("===============================TAKE OUT==============================");
+	    	lstitems.add("    Cashier Name:"  +   name);
+	    	lstitems.add("              Items");
+		}
+		
+		if (action.equals("Set New"))
+		{
+		quana=quana*0;quanb=quanb*0;quanc=quanc*0;quand=quand*0;quane=quane*0;quanf=quanf*0;quang=quang*0;quanh=quanh*0;quani=quani*0;quanj=quanj*0;
+		quann=quann*0;quano=quano*0;quanp=quanp*0;quanq=quanq*0;quanr=quanr*0;quans=quans*0;
+		ctr=ctr*0;
+		cmddine.setEnabled(true);
+		cmdtakeout.setEnabled(true);
+		cmdchococake.setEnabled(false);
+		cmdstrwberrycake.setEnabled(false);
+		cmdvelvetcake.setEnabled(false);
+		cmdmochacake.setEnabled(false);
+		cmdlflancake.setEnabled(false);
+		cmdvanillacake.setEnabled(false);
+		cmdforest.setEnabled(false);
+		cmdoreocake.setEnabled(false);
+		cmdcoffeecake.setEnabled(false);
+		cmdbluecake.setEnabled(false);
+		cmdcoke.setEnabled(false);
+		cmdsprite.setEnabled(false);
+		cmdroyal.setEnabled(false);
+		cmdcoffee.setEnabled(false);
+		cmdicedtea.setEnabled(false);
+		cmdnone.setEnabled(false);
+		cmdcompute.setEnabled(false);
+		lstitems.clear();
+		num.setText("0");
+		txtamnt.setText("");
+		txtpay.setText("");
+		txtname.setText("");
+		}
+		
+		int input = Integer.parseInt(txtquan.getText());
+		//choco
+		double quantity, choco=45;
+		ctr=ctr+1;
+		quantity=choco*input;
+		
+		if (action.equals("Chocolate Cake (Php.45.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Choco Cake                         @Php.45                      Quantity:   "+(input)+"                 Total Price:"+ quantity +"0");
+			num.setText(""+ctr);
+			quana=quana+input*45;			
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+		}
+		//strawberry
+		double quantity1, strawberry=50; 
+		ctr1=ctr1+1;
+		quantity=strawberry*input;
+		
+		if (action.equals("Strawberry Cake (Php.50.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Strawberry Cake                   @Php.50                      Quantity:   "+(input)+"                   Total Price:"+ quantity+"0");
+			num.setText("" +ctr);
+			quanb=quanb+input*50;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+		}
+		
+		//redvelvet
+		double quantity2, redvelvet=50;
+		ctr2=ctr2+1;
+		quantity=redvelvet*input;
+		
+		if (action.equals("Red Velvet Cake (Php.50.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Red Velvet Cake                   @Php.50                   Quantity:   "+(input)+"                   Total Price:"   + quantity+"0");
+			num.setText("" +ctr);
+			quanc=quanc+input*50;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+			
+	}
+		//mochacake
+		double quantity3, mocha=50;
+		ctr3=ctr3+1;
+		quantity=mocha*input;
+		
+		if (action.equals("Mocha Cake (Php.50.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Mocha Cake                         @Php.50                      Quantity:   "+(input)+"                  Total Price:"   + quantity+"0");
+			num.setText("" +ctr);
+			quand= quand+input*50;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+	
+	//Leche Flan
+		double quantity4, lecheflan=50;
+		ctr4=ctr4+1;
+		quantity=lecheflan*input;
+		
+		if (action.equals("Leche Flan Cake (Php.50.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Leche Flan Cake                 @Php.50                      Quantity:   "+(input)+"                 Total Price:"   + quantity+"0");
+			num.setText("" +ctr);
+			quane= quane+input*50;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+	
+	//Vanilla
+		double quantity5, vanilla=50;
+		ctr5=ctr5+1;
+		quantity=vanilla*input;
+		
+		if (action.equals("Vanilla Cake (Php.50.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Vanilla Cake                       @Php.50                      Quantity:   "+(input)+"                Total Price:"   + quantity+"0");
+			num.setText("" +ctr);
+			quanf= quanf+input*50;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+	
+		//BlackForest
+		double quantity6, black=50;
+		ctr6=ctr+1;
+		quantity=black*input;
+		
+		if (action.equals("Black Forest Cake (Php.50.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Black Forest Cake                @Php.50                      Quantity:   "+(input)+"              Total Price:"   + quantity+"0");
+			num.setText("" +ctr);
+			quang= quang+input*50;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+	
+	//Oreo
+	double quantity7, oreo=50;
+	ctr7=ctr7+1;
+		quantity=oreo*input;
+		
+		if (action.equals("Oreo Cake (Php.50.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Oreo Cake                          @Php.50                      Quantity:   "+(input)+"                Total Price:"   + quantity+"0");
+			num.setText("" +ctr);
+			quanh= quanh+input*50;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+	
+	//Coffee
+		double quantity8, coffee=50;
+		ctr8=ctr8+1;
+		quantity=coffee*input;
+		
+		if (action.equals("Coffee Cake (Php.50.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Coffee Cake                         @Php.50                      Quantity:   "+(input)+"                Total Price:"   + quantity+"0");
+			num.setText("" +ctr);
+			quani= quani+input*50;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+	
+	//Blueberry
+		double quantity9, blue=50;
+		ctr9=ctr9+1;
+		quantity=blue*input;
+		
+		if (action.equals("Blueberry Cake (Php.50.00)"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("     Blueberry Cake                   @Php.50                      Quantity:   "+(input)+"                Total Price:"   + quantity+"0");
+			num.setText("" +ctr);
+			quanj= quanj+input*50;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+		}
+		
+//coke
+		double quantity10, coke=15;
+		ctr10=ctr10+1;
+		quantity10=coke*input;
+			if (action.equals("Coca Cola"))
+		{				
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("    Coca Cola                          @Php.35                    Quantity:   "+(input)+"                   Total Price:"   + quantity10+"0");	
+			num.setText("" +ctr);
+			quann= quann+input*15;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+	//sprite
+		double quantity11, sprite=15;
+		ctr11=ctr11+1;
+		quantity11=sprite*input;
+		
+		if (action.equals("Sprite"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("    Sprite                             @Php.35                    Quantity:   "+(input)+"                   Total Price:"   + quantity11+"0");
+			num.setText("" +ctr);
+			quano= quano+input*15;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+		//royal
+		double quantity12, royal=15;
+		ctr12=ctr12+1;
+		quantity12=royal*input;
+		
+		if (action.equals("Royal"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("    Royal                              @Php.35                    Quantity:   "+(input)+"                   Total Price:"   + quantity12+"0");
+			num.setText("" +ctr);
+			quanp= quanp+input*15;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+		//coffee
+		double quantity13, cof=15;
+		ctr13=ctr13+1;
+		quantity13=cof*input;
+		
+		if (action.equals("Coffee"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("    Coffee                              @Php.35                    Quantity:   "+(input)+"                   Total Price:"   + quantity13+"0");
+			num.setText("" +ctr);
+			quanq= quanq+input*15;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+		//icetea
+		double quantity14, ice=15;
+		ctr14=ctr14+1;
+		quantity14= ice*input;
+		
+		if (action.equals("Iced Ted"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("    Iced Tea                             @Php.35                    Quantity:   "+(input)+"                   Total Price:"   + quantity14+"0");
+			num.setText("" +ctr);
+			quanr= quanr+input*15;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+	//none
+		double quantity15, none =0;
+		quantity15= none*input;
+		
+		if (action.equals("None"))
+		{
+			txtquan.setText("");
+			lstitems.add("");
+			lstitems.add("    None                                @Php.0                    Quantity:   "+(input)+"                   Total Price:"   + quantity15+"0");
+			quans= quans+input*0;
+			all=quana+quanb+quanc+quand+quane+quanf+quang+quanh+quani+quanj+quann+quano+quanp+quanq+quanr+quans;
+			txtamnt.setText("Php." + all);
+	}
+	}	
+}
